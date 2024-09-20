@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import { BudgetRequest } from "@/models/budget-request";
 // import FormData from "@/edit/[id]/FormData";
 
+// Assume Get API ID From DB
 // let nextId = 4;
 let nextId = 3;
 function Home() {
@@ -67,7 +68,7 @@ function Home() {
   };
 
   return (
-    <div>
+     <div>
       <Header />
       <main className="container mx-auto">
         <div className="mt-4">
@@ -92,6 +93,14 @@ function Home() {
             />
           </div>
           <button>Add</button>
+          <div>
+            <button onClick={(e) => {e.preventDefault();
+              window.open ("/add", "newWindow", "width=500,height=500");
+              }}> + Add
+            </button>
+          </div>
+
+
         </form>
         <div className="mt-4">
           <BudgetRequestDataTable items={budgetRequests} />

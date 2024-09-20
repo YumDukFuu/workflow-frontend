@@ -21,7 +21,10 @@ function BudgetRequestDataTable({ items }: BudgetRequestDataTableProps) {
             Title
           </th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Budget
+            Price
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Status
           </th>
         </tr>
       </thead>
@@ -29,16 +32,15 @@ function BudgetRequestDataTable({ items }: BudgetRequestDataTableProps) {
         {items.map((request) => (
           <tr key={request.id}>
             <td className="px-6 py-4 whitespace-nowrap">
-              <button className="text-gray-600 hover:text-blue-600">
-              {/* <button className="text-gray-600 hover:text-blue-600" onClick={http://localhost:3000/}> */}
-                <Pencil className="h-4 w-4" />
-              </button>
 
-              {/* <Link href="/edit/[1]">
-                <button className="text-gray-600 hover:text-blue-600">
-                  <Pencil className="h-4 w-4" />
-                </button>
-              </Link> */}
+              {/* <button className="text-gray-600 hover:text-blue-600">  */}
+              <button onClick={(e) => {e.preventDefault();
+                // window.location.href="/edit/1";
+                window.open ("/edit/1", "newWindow", "width=500,height=500");
+                }} className="text-gray-600 hover:text-blue-600" >
+              {/* <button onClick={window.open("/edit/1")} className="text-gray-600 hover:text-blue-600" > */}
+                <Pencil className="h-4 w-4"/>
+              </button>               
 
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-right">
@@ -50,6 +52,9 @@ function BudgetRequestDataTable({ items }: BudgetRequestDataTableProps) {
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-right">
               {formatDecimal(request.amount)}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-right">
+              {request.status}
             </td>
           </tr>
         ))}
